@@ -18,10 +18,13 @@ public class ProjectMapperImpl {
         return  dayExpenses;
     }
 
+
+
     //****************month expenses***************************
     public MonthExpensesDTO fromMonthExpenses(MonthExpenses monthExpenses){
         MonthExpensesDTO monthExpensesDTO=new MonthExpensesDTO();
         BeanUtils.copyProperties(monthExpenses,monthExpensesDTO);
+        monthExpensesDTO.setDayExpensesDTOList(monthExpenses.getDayExpenses().stream().map(this::fromDayExpenses).toList());
         return  monthExpensesDTO;
     }
 

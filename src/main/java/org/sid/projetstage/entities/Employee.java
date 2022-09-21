@@ -1,26 +1,25 @@
 package org.sid.projetstage.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.sid.projetstage.enumes.FunctionType;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@DiscriminatorValue("EMPLOYEE")
+@NoArgsConstructor @AllArgsConstructor
 public class Employee extends Person{
     @Enumerated(EnumType.STRING)
     private FunctionType functionType;
     @ManyToOne
     private Project project;
-    @ManyToOne
-    private DayExpenses dayExpenses;
+    @OneToOne
+    private MonthExpenses monthExpenses;
     @ManyToOne
     private Manager manager;
 }

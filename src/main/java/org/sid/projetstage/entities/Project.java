@@ -15,6 +15,7 @@ import java.util.List;
 public class Project {
     @Id
     private String id;
+    private String name;
     @OneToMany(mappedBy = "project")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Employee> employees;

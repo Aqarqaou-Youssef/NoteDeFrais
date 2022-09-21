@@ -14,11 +14,10 @@ import java.util.Date;
 public class DayExpenses {
     @Id
     private String id;
+    private String name;
     private double amount;
     private Date day;
     private String description;
-    @ManyToOne
-    private Employee employee;
     @ManyToOne
     private Project project;
     @ManyToOne
